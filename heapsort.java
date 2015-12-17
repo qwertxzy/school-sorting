@@ -1,6 +1,6 @@
 public class HeapSort {
-  public static void HeapSort(int[] a) {
+  public static int[] sort(int[] a) {
     
-    
+    return a;
    } 
   }
