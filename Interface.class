@@ -3,6 +3,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+/**
+  *
+  * Beschreibung
+  *
+  * @version 1.0 vom 17.12.2015
+  * @author 
+  */
+
 public class SortingProgram extends JFrame {
   // Anfang Attribute
   private JSlider slider = new JSlider();
@@ -48,7 +56,7 @@ public class SortingProgram extends JFrame {
       }
     });
     button1.setBackground(new Color(0xC0C0C0));
-    button1.setFont(new Font("Eras Bold ITC", Font.PLAIN, 12));
+    button1.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(button1);
     bubblechbx.setBounds(24, 120, 100, 20);
     bubblechbx.setLabel("BubbleSort");
@@ -67,13 +75,13 @@ public class SortingProgram extends JFrame {
     cp.add(quickchbx);
     label1.setBounds(16, 80, 130, 36);
     label1.setText("LENGTH OF ARRAY");
-    label1.setFont(new Font("Eras Bold ITC", Font.PLAIN, 12));
+    label1.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(label1);
     showtime.setBounds(152, 96, 222, 236);
     cp.add(showtime);
-    label2.setBounds(16, 280, 110, 20);
+    label2.setBounds(16, 280, 110, 26);
     label2.setText("ALGORITHM");
-    label2.setFont(new Font("Eras Bold ITC", Font.PLAIN, 12));
+    label2.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(label2);
     // Ende Komponenten
     
