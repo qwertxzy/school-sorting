@@ -2,19 +2,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import java.util.Random;
+import java.util.Arrays;
 
-/**
-  *
-  * Beschreibung
-  *
-  * @version 1.0 vom 17.12.2015
-  * @author 
-  */
-
-public class SortingProgram extends JFrame {
-  // Anfang Attribute
+public class Interface extends JFrame {
+  
   private JSlider slider = new JSlider();
-  private Button button1 = new Button();
+  private Button button = new Button();
   private Checkbox bubblechbx = new Checkbox();
   private Checkbox heapchbx = new Checkbox();
   private Checkbox bogobogochbx = new Checkbox();
@@ -23,10 +17,10 @@ public class SortingProgram extends JFrame {
   private Label label1 = new Label();
   private TextField showtime = new TextField();
   private Label label2 = new Label();
-  // Ende Attribute
   
-  public SortingProgram(String title) { 
-    // Frame-Initialisierung
+  
+  public Interface(String title) { 
+    
     super(title);
     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 493; 
@@ -39,7 +33,7 @@ public class SortingProgram extends JFrame {
     setResizable(false);
     Container cp = getContentPane();
     cp.setLayout(null);
-    // Anfang Komponenten
+    
     
     slider.setBounds(16, 16, 358, 70);
     slider.setMinorTickSpacing(10);
@@ -48,16 +42,16 @@ public class SortingProgram extends JFrame {
     slider.setPaintLabels(true);
     slider.setMaximum(10000);
     cp.add(slider);
-    button1.setBounds(384, 24, 91, 305);
-    button1.setLabel("START");
-    button1.addActionListener(new ActionListener() { 
+    button.setBounds(384, 24, 91, 305);
+    button.setLabel("START");
+    button.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
-        button1_ActionPerformed(evt);
+        button_ActionPerformed(evt);
       }
     });
-    button1.setBackground(new Color(0xC0C0C0));
-    button1.setFont(new Font("Impact", Font.PLAIN, 18));
-    cp.add(button1);
+    button.setBackground(new Color(0xC0C0C0));
+    button.setFont(new Font("Impact", Font.PLAIN, 18));
+    cp.add(button);
     bubblechbx.setBounds(24, 120, 100, 20);
     bubblechbx.setLabel("BubbleSort");
     cp.add(bubblechbx);
@@ -83,20 +77,32 @@ public class SortingProgram extends JFrame {
     label2.setText("ALGORITHM");
     label2.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(label2);
-    // Ende Komponenten
+    
     
     setVisible(true);
-  } // end of public SortingProgram
+  } 
   
-  // Anfang Methoden
-  public void button1_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
-  } // end of button1_ActionPerformed
-
-  // Ende Methoden
+  public int randomInteger(int min, int max) {
+    Random rand = new Random();
+    int randomNum = rand.nextInt((max - min) + 1) + min;
+    
+    return randomNum;
+  }
+  
+  private int[] randarr(int length) {
+    int[] a = new int[length];
+    for (int i = 0; i <= length - 1; i++) {
+      a[i] = 1 + randomInteger(1, 10000);
+    }
+    return a;
+  }
+  
+  public void button_ActionPerformed(ActionEvent evt) {
+    //INSERT CODE
+    int[] tbs = randarr(slider.getValue());
+  } 
   
   public static void main(String[] args) {
-    new SortingProgram("SortingProgram");
-  } // end of main
-  
-} // end of class SortingProgram
+    new Interface("Interface");
+  } 
+} 
