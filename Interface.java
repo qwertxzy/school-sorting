@@ -5,7 +5,7 @@ import javax.swing.event.*;
 
 
 
-public class SortingProgram extends JFrame {
+public class Interface extends JFrame {
   // Anfang Attribute
   private JSlider slider = new JSlider();
   private Button button = new Button();
