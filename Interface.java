@@ -8,7 +8,7 @@ import javax.swing.event.*;
 public class SortingProgram extends JFrame {
   // Anfang Attribute
   private JSlider slider = new JSlider();
-  private Button button1 = new Button();
+  private Button button = new Button();
   private Checkbox bubblechbx = new Checkbox();
   private Checkbox heapchbx = new Checkbox();
   private Checkbox bogochbx = new Checkbox();
@@ -20,7 +20,7 @@ public class SortingProgram extends JFrame {
   private Checkbox bogobogochbx = new Checkbox();
   // Ende Attribute
   
-  public SortingProgram(String title) { 
+  public Interface(String title) { 
     // Frame-Initialisierung
     super(title);
     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -94,7 +94,7 @@ public class SortingProgram extends JFrame {
   // Ende Methoden
   
   public static void main(String[] args) {
-    new SortingProgram("SortingProgram");
+    new Interface("Sort your array!");
   } // end of main
   
 } // end of class SortingProgram
