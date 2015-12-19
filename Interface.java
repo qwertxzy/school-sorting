@@ -2,8 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-
-
+import java.util.Random;
+import java.util.Arrays;
 
 public class Interface extends JFrame {
   // Anfang Attribute
@@ -13,9 +13,9 @@ public class Interface extends JFrame {
   private Checkbox heapchbx = new Checkbox();
   private Checkbox bogochbx = new Checkbox();
   private Checkbox cosmicraychbx = new Checkbox();
-  private Checkbox quickchbx = new Checkbox();
+  private Checkbox selectchbx = new Checkbox();
   private Label label1 = new Label();
-  private TextField showtime = new TextField();
+  private TextArea showtime = new TextArea();
   private Label label2 = new Label();
   private Checkbox bogobogochbx = new Checkbox();
   // Ende Attribute
@@ -43,16 +43,16 @@ public class Interface extends JFrame {
     slider.setPaintLabels(true);
     slider.setMaximum(10000);
     cp.add(slider);
-    button1.setBounds(384, 24, 91, 305);
-    button1.setLabel("START");
-    button1.addActionListener(new ActionListener() { 
+    button.setBounds(384, 24, 91, 305);
+    button.setLabel("Start");
+    button.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
-        button1_ActionPerformed(evt);
+        button_ActionPerformed(evt);
       }
     });
-    button1.setBackground(new Color(0xC0C0C0));
-    button1.setFont(new Font("Impact", Font.PLAIN, 18));
-    cp.add(button1);
+    button.setBackground(new Color(0xC0C0C0));
+    button.setFont(new Font("Impact", Font.PLAIN, 18));
+    cp.add(button);
     bubblechbx.setBounds(24, 120, 100, 20);
     bubblechbx.setLabel("BubbleSort");
     cp.add(bubblechbx);
@@ -65,14 +65,15 @@ public class Interface extends JFrame {
     cosmicraychbx.setBounds(24, 280, 124, 20);
     cosmicraychbx.setLabel("CosmicRaySort");
     cp.add(cosmicraychbx);
-    quickchbx.setBounds(24, 184, 100, 20);
-    quickchbx.setLabel("QuickSort");
-    cp.add(quickchbx);
+    selectchbx.setBounds(24, 184, 100, 20);
+    selectchbx.setLabel("SelectionSort");
+    cp.add(selectchbx);
     label1.setBounds(16, 80, 354, 28);
     label1.setText("LENGTH OF ARRAY");
     label1.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(label1);
     showtime.setBounds(152, 120, 222, 212);
+    showtime.setEditable(false);
     cp.add(showtime);
     label2.setBounds(16, 304, 110, 26);
     label2.setText("ALGORITHM");
@@ -87,14 +88,73 @@ public class Interface extends JFrame {
   } // end of public SortingProgram
   
   // Anfang Methoden
-  public void button1_ActionPerformed(ActionEvent evt) {
+  public int randomInteger(int min, int max) {
+    Random rand = new Random();
+    int randomNum = rand.nextInt((max - min) + 1) + min;
     
-  } // end of button1_ActionPerformed
+    return randomNum;
+  }
+  
+  private int[] randarr(int length) {
+    int[] a = new int[length];
+    for (int i = 0; i <= length - 1; i++) {
+      a[i] = 1 + randomInteger(1, 10000);
+    }
+    return a;
+  }
+  
+  public void button_ActionPerformed(ActionEvent evt) {
+    int[] tbs = randarr(slider.getValue());
+    button.setLabel("Working..");
+    if (bubblechbx.getState()) {
+      int[] bubbleclone = tbs.clone();
+      long startTime = System.nanoTime();
+      BubbleSort.sort(bubbleclone);
+      long duration = System.nanoTime() - startTime;
+      showtime.setText(showtime.getText() + "Bubblesort just finished in " + Long.toString(duration) + " Nanoseconds \n");
+    }
+    if (heapchbx.getState()) {
+      int[] heapclone = tbs.clone();
+      long startTime = System.nanoTime();
+      HeapSort.sort(heapclone);
+      long duration = System.nanoTime() - startTime;
+      showtime.setText(showtime.getText() + "Heapsort just finished in " + Long.toString(duration) + " Nanoseconds \n");
+    }
+    if (selectchbx.getState()) {
+      int[] selectclone = tbs.clone();
+      long startTime = System.nanoTime();
+      SelectionSort.sort(selectclone);
+      long duration = System.nanoTime() - startTime;
+      showtime.setText(showtime.getText() + "Selectionsort just finished in " + Long.toString(duration) + " Nanoseconds \n");
+    }
+    if (bogochbx.getState()) {
+      int[] bogoclone = tbs.clone();
+      long startTime = System.nanoTime();
+      BogoSort.sort(bogoclone);
+      long duration = System.nanoTime() - startTime;
+      showtime.setText(showtime.getText() + "Bogosort just finished in " + Long.toString(duration) + " Nanoseconds \n");
+    }
+    if (bogobogochbx.getState()) {
+      int[] bogobogoclone = tbs.clone();
+      long startTime = System.nanoTime();
+      BogoBogoSort.sort(bogobogoclone);
+      long duration = System.nanoTime() - startTime;
+      showtime.setText(showtime.getText() + "I highly doubt that this will ever be shown but Bogobogo Sort finisehd in " + Long.toString(duration) + " Nanoseconds \n");
+    }
+    if (cosmicraychbx.getState()) {
+      int[] cosmicrayclone = tbs.clone();
+      long startTime = System.nanoTime();
+      CosmicRaySort.sort(cosmicrayclone);
+      long duration = System.nanoTime() - startTime;
+      showtime.setText(showtime.getText() + "Is the solar system dead yet? If not, it finished in " + Long.toString(duration) + " Nanoseconds \n"); 
+    }
+    button.setLabel("Start");
+  } // end of button_ActionPerformed
   
   // Ende Methoden
   
   public static void main(String[] args) {
-    new Interface("Sort your array!");
+    new Interface("School-Sorting");
   } // end of main
   
 } // end of class SortingProgram
