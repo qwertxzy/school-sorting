@@ -6,7 +6,6 @@ import java.util.Random;
 import java.util.Arrays;
 
 public class Interface extends JFrame {
-  // Anfang Attribute
   private JSlider slider = new JSlider();
   private Button button = new Button();
   private Checkbox bubblechbx = new Checkbox();
@@ -21,7 +20,6 @@ public class Interface extends JFrame {
   // Ende Attribute
   
   public Interface(String title) { 
-    // Frame-Initialisierung
     super(title);
     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 493; 
@@ -34,7 +32,6 @@ public class Interface extends JFrame {
     setResizable(false);
     Container cp = getContentPane();
     cp.setLayout(null);
-    // Anfang Komponenten
     
     slider.setBounds(16, 16, 358, 70);
     slider.setMinorTickSpacing(1000);
@@ -82,12 +79,10 @@ public class Interface extends JFrame {
     bogobogochbx.setBounds(24, 248, 108, 20);
     bogobogochbx.setLabel("BogoBogoSort");
     cp.add(bogobogochbx);
-    // Ende Komponenten
     
     setVisible(true);
-  } // end of public SortingProgram
+  }
   
-  // Anfang Methoden
   public int randomInteger(int min, int max) {
     Random rand = new Random();
     int randomNum = rand.nextInt((max - min) + 1) + min;
@@ -98,7 +93,7 @@ public class Interface extends JFrame {
   private int[] randarr(int length) {
     int[] a = new int[length];
     for (int i = 0; i <= length - 1; i++) {
-      a[i] = 1 + randomInteger(1, 10000);
+      a[i] = randomInteger(1, 10000);
     }
     return a;
   }
@@ -149,12 +144,9 @@ public class Interface extends JFrame {
       showtime.setText(showtime.getText() + "Is the solar system dead yet? If not, it finished in " + Long.toString(duration) + " Nanoseconds \n"); 
     }
     button.setLabel("Start");
-  } // end of button_ActionPerformed
-  
-  // Ende Methoden
+  }
   
   public static void main(String[] args) {
     new Interface("School-Sorting");
-  } // end of main
-  
-} // end of class SortingProgram
+  }
+}

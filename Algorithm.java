@@ -6,7 +6,7 @@ public class Algorithm {
     a[y] = temp;
   }
   
-  //Sorting
+  //Checks if Array given as parameter is sorted
   public static boolean isSorted(int[] array){
     for(int i = 0; i < array.length-1; i ++){ 
       if (array[i] > array[i+1]) {
@@ -26,13 +26,13 @@ public class Algorithm {
       array[i] = re;
     }
   }
-  
+  //funky heap sort method
   public static void generateMaxHeap(int[] a) {
     for(int i = (a.length / 2) - 1; i >= 0 ; i--) {
       sink(a, i, a.length);
     }
   }
-  
+  // another heap sort thing
   public static void sink(int[] a, int i, int n) {
     while(i <= (n / 2) - 1) {
       int kindIndex = ((i+1) * 2) - 1; // berechnet den Index des linken kind
