@@ -17,13 +17,12 @@ public class Interface extends JFrame {
   private TextArea showtime = new TextArea();
   private Label label2 = new Label();
   private Checkbox bogobogochbx = new Checkbox();
-  // Ende Attribute
   
   public Interface(String title) { 
     super(title);
     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    int frameWidth = 493; 
-    int frameHeight = 377;
+    int frameWidth = 500; 
+    int frameHeight = 390;
     setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
     int x = (d.width - getSize().width) / 2;
@@ -33,14 +32,14 @@ public class Interface extends JFrame {
     Container cp = getContentPane();
     cp.setLayout(null);
     
-    slider.setBounds(16, 16, 358, 70);
+    slider.setBounds(15, 15, 360, 70);
     slider.setMinorTickSpacing(1000);
     slider.setMajorTickSpacing(2000);
     slider.setPaintTicks(true);
     slider.setPaintLabels(true);
     slider.setMaximum(10000);
     cp.add(slider);
-    button.setBounds(384, 24, 91, 305);
+    button.setBounds(385, 25, 100, 100);
     button.setLabel("Start");
     button.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -50,33 +49,33 @@ public class Interface extends JFrame {
     button.setBackground(new Color(0xC0C0C0));
     button.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(button);
-    bubblechbx.setBounds(24, 120, 100, 20);
+    bubblechbx.setBounds(24, 130, 100, 20);
     bubblechbx.setLabel("BubbleSort");
     cp.add(bubblechbx);
-    heapchbx.setBounds(24, 152, 100, 20);
+    heapchbx.setBounds(25, 160, 100, 20);
     heapchbx.setLabel("HeapSort");
     cp.add(heapchbx);
-    bogochbx.setBounds(24, 216, 116, 20);
+    bogochbx.setBounds(25, 220, 116, 20);
     bogochbx.setLabel("BogoSort");
     cp.add(bogochbx);
-    cosmicraychbx.setBounds(24, 280, 124, 20);
+    cosmicraychbx.setBounds(25, 280, 124, 20);
     cosmicraychbx.setLabel("CosmicRaySort");
     cp.add(cosmicraychbx);
-    selectchbx.setBounds(24, 184, 100, 20);
+    selectchbx.setBounds(25, 190, 100, 20);
     selectchbx.setLabel("SelectionSort");
     cp.add(selectchbx);
-    label1.setBounds(16, 80, 354, 28);
+    label1.setBounds(15, 80, 354, 28);
     label1.setText("LENGTH OF ARRAY");
     label1.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(label1);
-    showtime.setBounds(152, 120, 222, 212);
+    showtime.setBounds(150, 130, 335, 220);
     showtime.setEditable(false);
     cp.add(showtime);
-    label2.setBounds(16, 304, 110, 26);
+    label2.setBounds(15, 320, 110, 25);
     label2.setText("ALGORITHM");
     label2.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(label2);
-    bogobogochbx.setBounds(24, 248, 108, 20);
+    bogobogochbx.setBounds(25, 250, 108, 20);
     bogobogochbx.setLabel("BogoBogoSort");
     cp.add(bogobogochbx);
     
