@@ -1,12 +1,12 @@
 public class Algorithm {
-  //Method for easy swapping of ints in array
+  // Swappen von Ints in einem Array
   public static void swap(int[] a, int x, int y) {
     int temp = a[x];
     a[x] = a[y];
     a[y] = temp;
   }
   
-  //Checks if Array given as parameter is sorted
+  // Ueberpruefung ob das Array sortiert ist
   public static boolean isSorted(int[] array){
     for(int i = 0; i < array.length-1; i ++){ 
       if (array[i] > array[i+1]) {
@@ -26,18 +26,18 @@ public class Algorithm {
       array[i] = re;
     }
   }
-  //funky heap sort method
+  // HeapSort Methode
   public static void generateMaxHeap(int[] a) {
     for(int i = (a.length / 2) - 1; i >= 0 ; i--) {
       sink(a, i, a.length);
     }
   }
-  // another heap sort thing
+  // Weitere Heap Sort Methode
   public static void sink(int[] a, int i, int n) {
     while(i <= (n / 2) - 1) {
       int kindIndex = ((i+1) * 2) - 1; // berechnet den Index des linken kind
       
-      //bestimme ob ein rechtes Kind existiert
+      // bestimme ob ein rechtes Kind existiert
       if(kindIndex + 1 <= n -1) {
         //rechtes kind existiert
         if(a[kindIndex] < a[kindIndex+1]) {

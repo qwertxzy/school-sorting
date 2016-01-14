@@ -16,7 +16,6 @@ public class Interface extends JFrame {
   private Label label1 = new Label();
   private TextArea showtime = new TextArea();
   private Label label2 = new Label();
-  private Checkbox bogobogochbx = new Checkbox();
   
   public Interface(String title) { 
     super(title);
@@ -49,46 +48,43 @@ public class Interface extends JFrame {
     button.setBackground(new Color(0xC0C0C0));
     button.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(button);
-    bubblechbx.setBounds(24, 130, 100, 20);
+    bubblechbx.setBounds(24, 160, 100, 20);
     bubblechbx.setLabel("BubbleSort");
     cp.add(bubblechbx);
-    heapchbx.setBounds(25, 160, 100, 20);
+    heapchbx.setBounds(25, 190, 100, 20);
     heapchbx.setLabel("HeapSort");
     cp.add(heapchbx);
-    bogochbx.setBounds(25, 220, 116, 20);
+    bogochbx.setBounds(25, 250, 115, 20);
     bogochbx.setLabel("BogoSort");
     cp.add(bogochbx);
-    cosmicraychbx.setBounds(25, 280, 124, 20);
+    cosmicraychbx.setBounds(25, 280, 125, 20);
     cosmicraychbx.setLabel("CosmicRaySort");
     cp.add(cosmicraychbx);
-    selectchbx.setBounds(25, 190, 100, 20);
+    selectchbx.setBounds(25, 220, 100, 20);
     selectchbx.setLabel("SelectionSort");
     cp.add(selectchbx);
-    label1.setBounds(15, 80, 354, 28);
+    label1.setBounds(15, 80, 355, 28);
     label1.setText("LENGTH OF ARRAY");
     label1.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(label1);
     showtime.setBounds(150, 130, 335, 220);
     showtime.setEditable(false);
     cp.add(showtime);
-    label2.setBounds(15, 320, 110, 25);
+    label2.setBounds(15, 130, 110, 25);
     label2.setText("ALGORITHM");
     label2.setFont(new Font("Impact", Font.PLAIN, 18));
     cp.add(label2);
-    bogobogochbx.setBounds(25, 250, 108, 20);
-    bogobogochbx.setLabel("BogoBogoSort");
-    cp.add(bogobogochbx);
     
     setVisible(true);
   }
-  
-  public int randomInteger(int min, int max) {
+  // Funktion zum Generieren einer Random int mit range
+  private int randomInteger(int min, int max) {
     Random rand = new Random();
     int randomNum = rand.nextInt((max - min) + 1) + min;
     
     return randomNum;
   }
-  
+  // Funktion zum Generieren eines random Arrays mit Laenge x
   private int[] randarr(int length) {
     int[] a = new int[length];
     for (int i = 0; i <= length - 1; i++) {
@@ -96,17 +92,24 @@ public class Interface extends JFrame {
     }
     return a;
   }
-  
+  // Event Listener des Buttons
   public void button_ActionPerformed(ActionEvent evt) {
     int[] tbs = randarr(slider.getValue());
     button.setLabel("Working..");
+    // Abfragen der Checkbox fuer Bubblesort, wenn true laufen lassen
     if (bubblechbx.getState()) {
+      // Klonen des Arrays fuer Bubblesort
       int[] bubbleclone = tbs.clone();
+      // Starten des Timers
       long startTime = System.nanoTime();
+      // Eigentliches Sortieren
       BubbleSort.sort(bubbleclone);
+      // Ausrechenen der Zeit
       long duration = System.nanoTime() - startTime;
+      // Ausgabe der Ergebnisse
       showtime.setText(showtime.getText() + "Bubblesort just finished in " + Long.toString(duration) + " Nanoseconds \n");
     }
+    // Heapsort Abfrage
     if (heapchbx.getState()) {
       int[] heapclone = tbs.clone();
       long startTime = System.nanoTime();
@@ -114,6 +117,7 @@ public class Interface extends JFrame {
       long duration = System.nanoTime() - startTime;
       showtime.setText(showtime.getText() + "Heapsort just finished in " + Long.toString(duration) + " Nanoseconds \n");
     }
+    // Selection Sort Abfrage
     if (selectchbx.getState()) {
       int[] selectclone = tbs.clone();
       long startTime = System.nanoTime();
@@ -121,6 +125,7 @@ public class Interface extends JFrame {
       long duration = System.nanoTime() - startTime;
       showtime.setText(showtime.getText() + "Selectionsort just finished in " + Long.toString(duration) + " Nanoseconds \n");
     }
+    // Bogosort Abfrage
     if (bogochbx.getState()) {
       int[] bogoclone = tbs.clone();
       long startTime = System.nanoTime();
@@ -128,13 +133,7 @@ public class Interface extends JFrame {
       long duration = System.nanoTime() - startTime;
       showtime.setText(showtime.getText() + "Bogosort just finished in " + Long.toString(duration) + " Nanoseconds \n");
     }
-    if (bogobogochbx.getState()) {
-      int[] bogobogoclone = tbs.clone();
-      long startTime = System.nanoTime();
-      BogoBogoSort.sort(bogobogoclone);
-      long duration = System.nanoTime() - startTime;
-      showtime.setText(showtime.getText() + "I highly doubt that this will ever be shown but Bogobogo Sort finisehd in " + Long.toString(duration) + " Nanoseconds \n");
-    }
+    // Cosmic Ray Sort Abfrage
     if (cosmicraychbx.getState()) {
       int[] cosmicrayclone = tbs.clone();
       long startTime = System.nanoTime();
